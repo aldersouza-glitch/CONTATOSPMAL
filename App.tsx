@@ -126,9 +126,6 @@ const App: React.FC = () => {
               <div>
                 <h1 className="text-xl font-black tracking-tighter leading-none">GSCG</h1>
                 <p className="text-[10px] uppercase font-bold text-blue-300 mt-1 tracking-wider">Contatos Oficiais</p>
-                <p className="text-[9px] uppercase font-semibold text-white/80 mt-1.5 leading-tight tracking-wide">
-                  Assessoria do<br />Subcomando Geral
-                </p>
               </div>
             </div>
             <button onClick={() => setIsSidebarOpen(false)} className="lg:hidden p-2 hover:bg-white/10 rounded-full transition-colors active:scale-90">
@@ -177,8 +174,8 @@ const App: React.FC = () => {
         {/* Top Header Section */}
         <header className="bg-[#004085] pt-10 pb-6 lg:pt-12 lg:pb-10 px-4 lg:px-10 shadow-xl relative z-20">
           <div className="max-w-4xl mx-auto flex flex-col gap-5">
-            <div className="flex items-center justify-between">
-              <div className="flex items-center gap-4">
+            <div className="flex items-center justify-between relative">
+              <div className="flex items-center gap-4 z-10">
                 <button
                   onClick={() => setIsSidebarOpen(true)}
                   className="lg:hidden p-2.5 bg-white/15 rounded-xl text-white active:scale-90 transition-all shadow-lg hover:bg-white/20"
@@ -189,6 +186,13 @@ const App: React.FC = () => {
                   <h2 className="text-white text-[10px] lg:text-xs font-black uppercase tracking-[0.3em] opacity-90 drop-shadow-sm">Busca de Oficiais</h2>
                   <div className="h-0.5 w-10 bg-blue-400 mt-1.5 rounded-full shadow-glow"></div>
                 </div>
+              </div>
+
+              {/* Título Centralizado (Escondido em telas muito pequenas para não encavalar) */}
+              <div className="absolute left-1/2 -translate-x-1/2 hidden md:flex flex-col items-center">
+                <h2 className="text-white text-xs lg:text-sm font-black uppercase tracking-[0.2em] opacity-95 drop-shadow-md text-center">
+                  Assessoria do Subcomando Geral
+                </h2>
               </div>
 
               <button
