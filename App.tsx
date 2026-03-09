@@ -124,8 +124,11 @@ const App: React.FC = () => {
                 <img src="/logo.jpeg" alt="Logo PMAL" className="w-full h-full object-cover" />
               </div>
               <div>
-                <h1 className="text-xl font-black tracking-tighter leading-none">PMAL</h1>
+                <h1 className="text-xl font-black tracking-tighter leading-none">GSCG</h1>
                 <p className="text-[10px] uppercase font-bold text-blue-300 mt-1 tracking-wider">Contatos Oficiais</p>
+                <p className="text-[9px] uppercase font-semibold text-white/80 mt-1.5 leading-tight tracking-wide">
+                  Assessoria do<br />Subcomando Geral
+                </p>
               </div>
             </div>
             <button onClick={() => setIsSidebarOpen(false)} className="lg:hidden p-2 hover:bg-white/10 rounded-full transition-colors active:scale-90">
