@@ -120,8 +120,8 @@ const App: React.FC = () => {
         <div className="p-6 pt-8 pb-4">
           <div className="flex items-center justify-between mb-4">
             <div className="flex items-center gap-3">
-              <div className="w-10 h-10 border-2 border-white/20 rounded-xl flex items-center justify-center bg-white/5 shadow-inner">
-                <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" /></svg>
+              <div className="w-12 h-12 rounded-xl flex items-center justify-center bg-white shadow-inner overflow-hidden border-2 border-white/20">
+                <img src="/logo.jpeg" alt="Logo PMAL" className="w-full h-full object-cover" />
               </div>
               <div>
                 <h1 className="text-xl font-black tracking-tighter leading-none">PMAL</h1>
