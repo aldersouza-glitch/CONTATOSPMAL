@@ -1,0 +1,5 @@
+{
+  "name": "PMAL - Contatos de Oficiais",
+  "description": "Aplicativo interativo para visualização de contatos e cargos dos Comandantes e Diretores da Polícia Militar de Alagoas (PMAL).",
+  "requestFramePermissions": []
+}

@@ -1,0 +1,155 @@
+const SUPABASE_URL = 'https://maaiemkmkqzpcylthjia.supabase.co';
+const SUPABASE_KEY = 'sb_publishable_CFKX3Tw-Zw0UJm-k-vpleg_guK40_w8';
+
+function onOpen() {
+  const ui = SpreadsheetApp.getUi();
+  ui.createMenu('Sincronizar Supabase')
+    .addItem('⬆️ Enviar Alterações da Planilha para o Banco', 'syncAllToSupabase')
+    .addItem('⬇️ Puxar (Restaurar) TUDO do Banco', 'syncFromSupabase')
+    .addSeparator()
+    .addItem('🧹 Remover Nomes Duplicados do Sistema', 'limparDuplicadosTudo')
+    .addToUi();
+}
+
+function limparDuplicadosTudo() {
+  const sheet = SpreadsheetApp.getActiveSpreadsheet().getActiveSheet();
+  const data = sheet.getDataRange().getValues();
+  const header = data[0];
+  const rows = data.slice(1);
+  const ui = SpreadsheetApp.getUi();
+  
+  const uniqueNames = new Set();
+  const uniqueRows = [];
+  
+  for (let i = 0; i < rows.length; i++) {
+    const row = rows[i];
+    const name = String(row[5]).trim().toLowerCase();
+    
+    if (name !== '' && !uniqueNames.has(name)) {
+      uniqueNames.add(name);
+      uniqueRows.push(row);
+    }
+  }
+  
+  sheet.clear();
+  sheet.appendRow(header);
+  sheet.getRange(1, 1, 1, 8).setFontWeight("bold").setBackground("#e0e0e0").setHorizontalAlignment("center");
+  uniqueRows.forEach(row => sheet.appendRow(row));
+  sheet.autoResizeColumns(1, 8);
+  
+  try {
+    const urlDel = `${SUPABASE_URL}/rest/v1/officers?id=not.is.null`;
+    UrlFetchApp.fetch(urlDel, {
+      method: 'delete',
+      headers: { 'apikey': SUPABASE_KEY, 'Authorization': `Bearer ${SUPABASE_KEY}` },
+      muteHttpExceptions: true
+    });
+    
+    const payloadData = uniqueRows.map(row => ({
+        id: String(row[0]).trim(), category: String(row[1]).trim(), unit: String(row[2]).trim(), rank: String(row[3]).trim(),
+        matricula: String(row[4]).trim(), name: String(row[5]).trim(), role: String(row[6]).trim(), contact: String(row[7]).trim()
+    }));
+    
+    UrlFetchApp.fetch(`${SUPABASE_URL}/rest/v1/officers`, {
+      method: 'post', contentType: 'application/json',
+      headers: { 'apikey': SUPABASE_KEY, 'Authorization': `Bearer ${SUPABASE_KEY}`, 'Prefer': 'resolution=merge-duplicates' },
+      payload: JSON.stringify(payloadData), muteHttpExceptions: true
+    });
+    
+    ui.alert(`Limpeza Completa! Mantivemos apenas originais livres de repetição no Banco e na Planilha.`);
+  } catch(err) {
+    ui.alert("Erro ao limpar o banco: " + err);
+  }
+}
+
+function syncAllToSupabase() {
+  const sheet = SpreadsheetApp.getActiveSpreadsheet().getActiveSheet();
+  const ui = SpreadsheetApp.getUi();
+  const lastRow = sheet.getLastRow();
+  if (lastRow < 2) { ui.alert('A planilha parece estar vazia.'); return; }
+  const allData = sheet.getRange(2, 1, lastRow - 1, 8).getValues();
+  const payloadData = [];
+  
+  for (let i = 0; i < allData.length; i++) {
+    const row = allData[i];
+    const officer = {
+      id: String(row[0]).trim(), category: String(row[1]).trim(), unit: String(row[2]).trim(), rank: String(row[3]).trim(),
+      matricula: String(row[4]).trim(), name: String(row[5]).trim(), role: String(row[6]).trim(), contact: String(row[7]).trim()
+    };
+    if(!officer.id && officer.name) {
+      if(officer.matricula && officer.matricula !== '' && officer.matricula !== '---') {
+        officer.id = `mat-${officer.matricula.replace(/\D/g,'')}`;
+      } else { officer.id = `slug-${officer.name.replace(/\s+/g, '-').toLowerCase()}-${Math.floor(Math.random()*1000)}`; }
+      sheet.getRange(i + 2, 1).setValue(officer.id);
+    }
+    if (officer.id && officer.id !== '') { payloadData.push(officer); }
+  }
+  
+  const options = {
+    method: 'post', contentType: 'application/json',
+    headers: { 'apikey': SUPABASE_KEY, 'Authorization': `Bearer ${SUPABASE_KEY}`, 'Prefer': 'resolution=merge-duplicates' },
+    payload: JSON.stringify(payloadData), muteHttpExceptions: true
+  };
+  try {
+    const response = UrlFetchApp.fetch(`${SUPABASE_URL}/rest/v1/officers`, options);
+    if (response.getResponseCode() >= 200 && response.getResponseCode() < 300) { ui.alert('Banco de Dados atualizado à força!'); } 
+    else { ui.alert('Erro código ' + response.getResponseCode()); }
+  } catch(err) { ui.alert("Erro de conexão."); }
+}
+
+function syncFromSupabase() {
+  const options = { method: 'get', headers: { 'apikey': SUPABASE_KEY, 'Authorization': `Bearer ${SUPABASE_KEY}` } };
+  const response = UrlFetchApp.fetch(`${SUPABASE_URL}/rest/v1/officers?select=*&order=name.asc`, options);
+  const data = JSON.parse(response.getContentText());
+  const sheet = SpreadsheetApp.getActiveSpreadsheet().getActiveSheet();
+  sheet.clear();
+  sheet.appendRow(['ID_MATRI', 'COMANDO', 'OPM', 'POSTO', 'MAT', 'NOME', 'CARGO', 'FONE']);
+  sheet.getRange(1, 1, 1, 8).setFontWeight("bold").setBackground("#e0e0e0").setHorizontalAlignment("center");
+  data.forEach(of => { sheet.appendRow([of.id, of.category, of.unit, of.rank, of.matricula, of.name, of.role, of.contact]); });
+  sheet.autoResizeColumns(1, 8);
+  SpreadsheetApp.getUi().alert('Restauração de 8 colunas concluída!');
+}
+
+function enviarEdicaoParaOBanco(e) {
+  if (!e || !e.range) return;
+  const sheet = e.source.getActiveSheet();
+  const row = e.range.getRow();
+  if (row > 1) { 
+    const data = sheet.getRange(row, 1, 1, 8).getValues()[0];
+    const officer = { id: data[0], category: data[1], unit: data[2], rank: data[3], matricula: data[4], name: data[5], role: data[6], contact: data[7] };
+    if (officer.id && String(officer.id).trim() !== '') {
+      updateSupabase(officer);
+    }
+  }
+}
+
+function updateSupabase(officer) {
+  const url = `${SUPABASE_URL}/rest/v1/officers?id=eq.${officer.id}`;
+  const options = {
+    method: 'patch',
+    contentType: 'application/json',
+    headers: {
+      'apikey': SUPABASE_KEY, 'Authorization': `Bearer ${SUPABASE_KEY}`, 'Prefer': 'resolution=merge-duplicates'
+    },
+    payload: JSON.stringify(officer),
+    muteHttpExceptions: true
+  };
+  try { UrlFetchApp.fetch(url, options); } catch(err) {}
+}
+
+function doPost(e) {
+  try {
+    const json = JSON.parse(e.postData.contents);
+    const record = json.record; 
+    if (record) {
+      const sheet = SpreadsheetApp.getActiveSpreadsheet().getActiveSheet();
+      const lastRow = sheet.getLastRow();
+      let rowToEdit = -1;
+      const ids = sheet.getRange(2, 1, Math.max(1, lastRow - 1), 1).getValues();
+      for (let i = 0; i < ids.length; i++) { if (ids[i][0] == record.id) { rowToEdit = i + 2; break; } }
+      const rowData = [ record.id, record.category, record.unit, record.rank, record.matricula, record.name, record.role, record.contact ];
+      if (rowToEdit !== -1) { sheet.getRange(rowToEdit, 1, 1, 8).setValues([rowData]); } else { sheet.appendRow(rowData); }
+    }
+    return ContentService.createTextOutput("Sucesso");
+  } catch(err) { return ContentService.createTextOutput("Erro"); }
+}
