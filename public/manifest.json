@@ -1,0 +1,17 @@
+{
+    "name": "PMAL Contatos",
+    "short_name": "PMAL",
+    "description": "Contatos Oficiais da Polícia Militar de Alagoas",
+    "start_url": "/",
+    "display": "standalone",
+    "background_color": "#f8fafc",
+    "theme_color": "#1e293b",
+    "icons": [
+        {
+            "src": "/icon.svg",
+            "type": "image/svg+xml",
+            "sizes": "192x192 512x512",
+            "purpose": "any maskable"
+        }
+    ]
+}
