@@ -74,7 +74,7 @@ export const OFFICER_DATA: Officer[] = [
   { id: 'esp-12', category: 'Especializado', unit: 'CPM/I-Faz', rank: '1º TEN', matricula: '22772', name: 'LUIZ FERNANDO FRANÇA DE ARAUJO', role: 'Subcomandante da CPM/I-Faz', contact: '99836-4270' },
   { id: 'mis-1', category: 'Missões', unit: 'CME', rank: 'TC', matricula: '120707', name: 'HENRIQUE JATOBÁ CORREIA', role: 'Comandante do Comando de Missões Especiais', contact: '98885-9474' },
   { id: 'mis-2', category: 'Missões', unit: 'CME', rank: 'TC', matricula: '121053', name: 'ANTONIO JORGE MOREIRA JUNIOR', role: 'Subcomandante do Comando de Missões Especiais', contact: '99663-7778' },
-  { id: 'mis-3', category: 'Missões', unit: 'BOPE', rank: 'TC', matricula: '---', name: '1207520 DIEGO SARMENTO FIRMINO', role: 'Comandante do BOPE', contact: '99973-3680' },
+  { id: 'mis-3', category: 'Missões', unit: 'BOPE', rank: 'TC', matricula: '---', name: 'DIEGO SARMENTO FIRMINO', role: 'Comandante do BOPE', contact: '99973-3680' },
   { id: 'mis-4', category: 'Missões', unit: 'BOPE', rank: 'MAJ', matricula: '98667831', name: 'JOACY GALDINO DA SILVA JUNIOR', role: 'Subcomandante do BOPE', contact: '98811-1016' },
   { id: 'mis-5', category: 'Missões', unit: 'ROTAM', rank: 'MAJ', matricula: '1207342', name: 'HELQUIAS ALISSON SANTOS PEREIRA', role: 'Comandante da ROTAM', contact: '98831-8546' },
   { id: 'mis-6', category: 'Missões', unit: 'ROTAM', rank: 'CAP', matricula: '1562', name: 'SEBASTIAO GRANGEIRO BISNETO', role: 'Subcomandante da ROTAM', contact: '98713-6141' },
