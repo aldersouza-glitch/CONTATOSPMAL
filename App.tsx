@@ -189,8 +189,8 @@ const App: React.FC = () => {
               </div>
 
               {/* Título Centralizado (Escondido em telas muito pequenas para não encavalar) */}
-              <div className="absolute left-1/2 -translate-x-1/2 hidden md:flex flex-col items-center">
-                <h2 className="text-white text-xs lg:text-sm font-black uppercase tracking-[0.2em] opacity-95 drop-shadow-md text-center">
+              <div className="absolute left-1/2 -translate-x-1/2 hidden md:flex flex-col items-center -mt-3">
+                <h2 className="text-white text-sm lg:text-lg font-black uppercase tracking-[0.15em] opacity-100 drop-shadow-lg text-center">
                   Assessoria do Subcomando Geral
                 </h2>
               </div>
