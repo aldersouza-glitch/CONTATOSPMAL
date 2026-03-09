@@ -44,3 +44,12 @@ export async function insertOfficer(officer: Omit<Officer, 'updated_at'>) {
   if (error) throw error;
   return data;
 }
+
+export async function deleteOfficer(id: string) {
+  const { error } = await supabase
+    .from('officers')
+    .delete()
+    .eq('id', id);
+
+  if (error) throw error;
+}

@@ -3,7 +3,7 @@ import React, { useState, useMemo, useEffect } from 'react';
 import { CATEGORY_LABELS, OFFICER_DATA } from './data';
 import OfficerCard from './components/OfficerCard';
 import AddOfficerModal from './components/AddOfficerModal';
-import { getOfficers, subscribeToOfficers, insertOfficer } from './lib/supabase';
+import { getOfficers, subscribeToOfficers, insertOfficer, deleteOfficer } from './lib/supabase';
 import { Officer } from './types';
 
 const App: React.FC = () => {
@@ -13,6 +13,7 @@ const App: React.FC = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [officers, setOfficers] = useState<Officer[]>(OFFICER_DATA); // Inicia com o fallback local
   const [loading, setLoading] = useState(true);
+  const [isAdmin, setIsAdmin] = useState(false);
 
   const handleSaveOfficer = async (newOfficer: Omit<Officer, 'id' | 'updated_at'>) => {
     try {
@@ -23,6 +24,32 @@ const App: React.FC = () => {
     } catch (error) {
       console.error('Erro ao salvar oficial:', error);
       throw error;
+    }
+  };
+
+  const handleDeleteOfficer = async (id: string) => {
+    try {
+      await deleteOfficer(id);
+      // Supabase's Realtime will handle the state update if it's active.
+      // But we can also eagerly update local state for faster UI reaction:
+      setOfficers(prev => prev.filter(off => off.id !== id));
+    } catch (error) {
+      console.error('Erro ao excluir oficial:', error);
+      alert('Erro ao excluir contato. Tente novamente.');
+    }
+  };
+
+  const handleAdminAction = (action: () => void) => {
+    if (isAdmin) {
+      action();
+    } else {
+      const password = window.prompt("Digite a senha de Administrador para acessar esta função:");
+      if (password === "GSCG2026") {
+        setIsAdmin(true);
+        action();
+      } else if (password !== null) {
+        alert("Senha incorreta!");
+      }
     }
   };
 
@@ -162,7 +189,7 @@ const App: React.FC = () => {
               </div>
 
               <button
-                onClick={() => setIsModalOpen(true)}
+                onClick={() => handleAdminAction(() => setIsModalOpen(true))}
                 className="flex items-center gap-2 px-4 py-2.5 bg-blue-500 hover:bg-blue-400 text-white rounded-xl font-black uppercase text-[10px] tracking-widest shadow-lg active:scale-95 transition-all"
               >
                 <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round"><path d="M5 12h14" /><path d="M12 5v14" /></svg>
@@ -203,7 +230,12 @@ const App: React.FC = () => {
             {filteredOfficers.length > 0 ? (
               <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-4 lg:gap-6">
                 {filteredOfficers.map((officer) => (
-                  <OfficerCard key={officer.id} officer={officer} />
+                  <OfficerCard
+                    key={officer.id}
+                    officer={officer}
+                    isAdmin={isAdmin}
+                    onDelete={handleDeleteOfficer}
+                  />
                 ))}
               </div>
             ) : (
