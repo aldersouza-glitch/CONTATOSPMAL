@@ -149,7 +149,7 @@ const App: React.FC = () => {
       return priority;
     };
 
-    return [...officers] // Cria cópia para garantir que a ordenação seja aplicada
+    const sorted = [...officers] // Cria cópia para garantir que a ordenação seja aplicada
       .filter((officer) => {
         const search = searchTerm.toLowerCase().trim();
         const matchesSearch =
@@ -173,7 +173,13 @@ const App: React.FC = () => {
         // Se a prioridade for igual, ordena por nome
         return a.name.localeCompare(b.name);
       });
-  }, [searchTerm, activeCategory, activeUnit, officers]);
+      
+      // HIDE "Outros" from non-admins at the end of filtering
+      if (!isAdmin) {
+          return sorted.filter(officer => officer.category !== 'Outros');
+      }
+      return sorted;
+  }, [searchTerm, activeCategory, activeUnit, officers, isAdmin]);
 
   const unitsInActiveCategory = useMemo(() => {
     if (activeCategory === 'all') return [];
@@ -257,7 +263,7 @@ const App: React.FC = () => {
         </nav>
 
         <div className="p-4 bg-black/20 text-[9px] text-blue-200/50 text-center uppercase tracking-[0.2em] font-bold border-t border-white/5">
-          Gabinete do Subcomando Geral <span className="opacity-50 text-[8px] block mt-1">v1.7 - Filtros Ativos</span>
+          Gabinete do Subcomando Geral <span className="opacity-50 text-[8px] block mt-1">v1.8 - Filtros Restritos</span>
         </div>
       </aside>
 

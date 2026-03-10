@@ -1,6 +1,6 @@
 import { Officer } from './types';
 
-export const OFFICER_DATA: Officer[] = [
+const OFFICER_DATA: Officer[] = [
   { id: 'out-42', category: 'Outros', unit: 'PMAL', rank: 'TC', matricula: '11437.', name: 'CICERO QUEIROZ DA SILVA', role: 'Oficial', contact: '98714-7108' },
   { id: 'cg-2', category: 'Comando', unit: 'GCG', rank: 'MAJ', matricula: '117528', name: 'ADEILSON LINS DE CARVALHO', role: 'Chefe de Gabinete do Comandante Geral c/c Chefe da Assessoria do Comandante Geral', contact: '8823-8269' },
   { id: 'ser-2', category: 'Sertão', unit: 'CPRS', rank: 'TC', matricula: '1200712', name: 'ADEMAR SIQUEIRA DA SILVA NETO', role: 'Subcomandante do Comando de Policiamento da Região Sertão', contact: '98833-4013' },
@@ -233,7 +233,7 @@ export const OFFICER_DATA: Officer[] = [
   { id: 'out-kbxo9', category: 'Outros', unit: 'PMAL', rank: 'MAJ', matricula: '98654187', name: 'REINALDO DE LIMA BARBOSA JÚNIOR', role: 'Oficial', contact: '99973-7905' },
 ];
 
-export const CATEGORY_LABELS: Record<string, string> = {
+const CATEGORY_LABELS = {
   all: 'Todos os Contatos',
   Comando: 'Comando Geral',
   Subcomando: 'Subcomando Geral',
@@ -246,6 +246,7 @@ export const CATEGORY_LABELS: Record<string, string> = {
   Especializado: 'Pol. Especializado',
   Missões: 'Missões Especiais',
   Diretorias: 'Diretorias / Ensino',
-  Administrativo: 'Corregedoria',
-  Outros: 'Outros Oficiais'
+  Administrativo: 'Corregedoria'
 };
+
+module.exports = { OFFICER_DATA, CATEGORY_LABELS };
