@@ -9,6 +9,18 @@ interface AddOfficerModalProps {
     initialData?: Officer | null;
 }
 
+const COMMON_UNITS = [
+    "GCG", "Subcomando Geral", "EMG", "CORREG", "APMSAM", "CFAP", "DEIP", "DP", "DLog", "DF", "DI", "DCS", "DPS", "DS", "DPP", "DEF",
+    "1º BPM", "2º BPM", "3º BPM", "4º BPM", "5º BPM", "6º BPM", "7º BPM", "8º BPM", "9º BPM", "10º BPM", "11º BPM", "12º BPM", "13º BPM", "14º BPM",
+    "1ª CPM/I", "2ª CPM/I", "3ª CPM/I", "4ª CPM/I", "5ª CPM/I", "6ª CPM/I", "7ª CPM/I", "8ª CPM/I", "9ª CPM/I", "10ª CPM/I",
+    "BOPE", "ROTAM", "RPMon", "BPRv", "BPTran", "BPA", "BPEsc", "COPES", "CPChoque", "CME", "CPE", "CPRS", "CPRA", "CPRN-ZM", "CPRSul"
+];
+
+const COMMON_ROLES = [
+    "Comandante Geral", "SubComandante Geral", "Chefe do EMG", "Subchefe do EMG", "Corregedor Geral", "Subcorregedor Geral",
+    "Comandante", "Subcomandante", "Diretor", "Subdiretor", "Chefe de Gabinete", "Chefe da Assessoria", "Oficial"
+];
+
 const AddOfficerModal: React.FC<AddOfficerModalProps> = ({ isOpen, onClose, onSave, initialData }) => {
     const [formData, setFormData] = React.useState({
         name: '',
@@ -133,22 +145,30 @@ const AddOfficerModal: React.FC<AddOfficerModalProps> = ({ isOpen, onClose, onSa
                             <label className="block text-[10px] font-black text-slate-400 uppercase tracking-widest mb-1.5 ml-1">Cargo / Função</label>
                             <input
                                 required
+                                list="roles-list"
                                 className="w-full px-4 py-3.5 bg-slate-50 border-2 border-slate-100 rounded-xl focus:border-blue-500 focus:bg-white outline-none transition-all font-bold text-slate-800"
                                 placeholder="Ex: Comandante Geral"
                                 value={formData.role}
                                 onChange={e => setFormData({ ...formData, role: e.target.value })}
                             />
+                            <datalist id="roles-list">
+                                {COMMON_ROLES.map((role: string) => <option key={role} value={role} />)}
+                            </datalist>
                         </div>
 
                         <div>
                             <label className="block text-[10px] font-black text-slate-400 uppercase tracking-widest mb-1.5 ml-1">Unidade / OPM</label>
                             <input
                                 required
+                                list="units-list"
                                 className="w-full px-4 py-3.5 bg-slate-50 border-2 border-slate-100 rounded-xl focus:border-blue-500 focus:bg-white outline-none transition-all font-bold text-slate-800"
                                 placeholder="Ex: GCG, 1º BPM..."
                                 value={formData.unit}
                                 onChange={e => setFormData({ ...formData, unit: e.target.value.toUpperCase() })}
                             />
+                            <datalist id="units-list">
+                                {COMMON_UNITS.map((unit: string) => <option key={unit} value={unit} />)}
+                            </datalist>
                         </div>
 
                         <div>
