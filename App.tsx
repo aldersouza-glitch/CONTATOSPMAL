@@ -124,6 +124,12 @@ const App: React.FC = () => {
     };
 
     const getOfficerPriority = (officer: Officer) => {
+      const role = (officer.role || '').toLowerCase().trim();
+      
+      // Força Absoluta: Comandante Geral e Subcomandante Geral TÊM que ser os 01 e 02 de toda a PMAL.
+      if (role === 'comandante geral') return 10;
+      if (role === 'subcomandante geral') return 20;
+
       let priority = 10000;
       
       // Prioridade por Posto/Graduação (Protegido contra null/undefined/espaços)
@@ -134,8 +140,6 @@ const App: React.FC = () => {
 
       // Bônus de prioridade por Cargo dentro da mesma patente
       // Comandantes, diretores e chefes têm prioridade sobre subs
-      const role = (officer.role || '').toLowerCase();
-      
       if (role.includes('subcomandante') || role.includes('subdiretor') || role.includes('subchefe')) {
         priority -= 20; // Subs ganham 20 pontos de prioridade
       } else if (role.includes('comandante') || role.includes('diretor') || role.includes('chefe')) {
