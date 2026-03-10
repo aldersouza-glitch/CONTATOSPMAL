@@ -124,8 +124,9 @@ const App: React.FC = () => {
     const getOfficerPriority = (officer: Officer) => {
       let priority = 1000;
       
-      // Prioridade por Posto/Graduação
-      const rankPrio = RANK_PRIORITY[officer.rank.toUpperCase()] || 100;
+      // Prioridade por Posto/Graduação (Protegido contra null/undefined/espaços)
+      const rankKey = (officer.rank || '').toUpperCase().trim();
+      const rankPrio = RANK_PRIORITY[rankKey] || 100;
       priority += rankPrio * 10;
 
       // Bônus de prioridade por Cargo (quanto menor o número, mais pro topo)
@@ -137,7 +138,7 @@ const App: React.FC = () => {
       return priority;
     };
 
-    return officers
+    return [...officers] // Cria cópia para garantir que a ordenação seja aplicada
       .filter((officer) => {
         const search = searchTerm.toLowerCase().trim();
         const matchesSearch =
@@ -233,7 +234,7 @@ const App: React.FC = () => {
         </nav>
 
         <div className="p-4 bg-black/20 text-[9px] text-blue-200/50 text-center uppercase tracking-[0.2em] font-bold border-t border-white/5">
-          Gabinete do Comando Geral
+          Gabinete do Comando Geral <span className="opacity-50">v1.2</span>
         </div>
       </aside>
 
