@@ -129,6 +129,14 @@ const App: React.FC = () => {
     });
   }, [searchTerm, activeCategory, officers]);
 
+  const allUnits = useMemo(() => {
+    return Array.from(new Set(officers.map(o => o.unit.trim().toUpperCase()))).sort();
+  }, [officers]);
+
+  const allRoles = useMemo(() => {
+    return Array.from(new Set(officers.map(o => o.role?.trim() || ''))).filter(r => r !== '').sort();
+  }, [officers]);
+
   return (
     <div className="flex h-screen w-full bg-[#f8fafc] overflow-hidden relative">
       {/* Overlay Mobile */}
@@ -295,6 +303,8 @@ const App: React.FC = () => {
         }}
         onSave={handleSaveOfficer}
         initialData={editingOfficer}
+        suggestedUnits={allUnits}
+        suggestedRoles={allRoles}
       />
     </div>
   );
