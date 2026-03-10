@@ -5,11 +5,12 @@ import { CATEGORY_LABELS } from '../data';
 interface AddOfficerModalProps {
     isOpen: boolean;
     onClose: () => void;
-    onSave: (officer: Omit<Officer, 'id' | 'updated_at'>) => Promise<void>;
+    onSave: (officer: Omit<Officer, 'id' | 'updated_at'> | Officer) => Promise<void>;
+    initialData?: Officer | null;
 }
 
-const AddOfficerModal: React.FC<AddOfficerModalProps> = ({ isOpen, onClose, onSave }) => {
-    const [formData, setFormData] = useState({
+const AddOfficerModal: React.FC<AddOfficerModalProps> = ({ isOpen, onClose, onSave, initialData }) => {
+    const [formData, setFormData] = React.useState({
         name: '',
         rank: 'CEL',
         role: '',
@@ -18,7 +19,31 @@ const AddOfficerModal: React.FC<AddOfficerModalProps> = ({ isOpen, onClose, onSa
         category: 'Comando',
         matricula: ''
     });
-    const [isSubmitting, setIsSubmitting] = useState(false);
+    const [isSubmitting, setIsSubmitting] = React.useState(false);
+
+    React.useEffect(() => {
+        if (initialData) {
+            setFormData({
+                name: initialData.name,
+                rank: initialData.rank,
+                role: initialData.role,
+                unit: initialData.unit,
+                contact: initialData.contact,
+                category: initialData.category,
+                matricula: initialData.matricula || ''
+            });
+        } else {
+            setFormData({
+                name: '',
+                rank: 'CEL',
+                role: '',
+                unit: '',
+                contact: '',
+                category: 'Comando',
+                matricula: ''
+            });
+        }
+    }, [initialData, isOpen]);
 
     if (!isOpen) return null;
 
@@ -26,7 +51,13 @@ const AddOfficerModal: React.FC<AddOfficerModalProps> = ({ isOpen, onClose, onSa
         e.preventDefault();
         setIsSubmitting(true);
         try {
-            await onSave(formData);
+            if (initialData) {
+                // Ao editar, passamos o objeto completo com ID
+                await onSave({ ...formData, id: initialData.id } as Officer);
+            } else {
+                // Ao criar, passamos apenas os campos de dados
+                await onSave(formData as Omit<Officer, 'id' | 'updated_at'>);
+            }
             onClose();
             setFormData({
                 name: '',
@@ -52,8 +83,12 @@ const AddOfficerModal: React.FC<AddOfficerModalProps> = ({ isOpen, onClose, onSa
             <div className="bg-white rounded-3xl w-full max-w-xl shadow-2xl overflow-hidden animate-in fade-in zoom-in duration-300">
                 <div className="bg-[#002b5c] p-6 text-white flex justify-between items-center">
                     <div>
-                        <h2 className="text-xl font-black uppercase tracking-tight">Novo Oficial</h2>
-                        <p className="text-blue-200/60 text-[10px] font-bold uppercase tracking-widest mt-1">Adicionar ao Banco de Dados</p>
+                        <h2 className="text-xl font-black uppercase tracking-tight">
+                            {initialData ? 'Editar Oficial' : 'Novo Oficial'}
+                        </h2>
+                        <p className="text-blue-200/60 text-[10px] font-bold uppercase tracking-widest mt-1">
+                            {initialData ? 'Atualizar no Banco de Dados' : 'Adicionar ao Banco de Dados'}
+                        </p>
                     </div>
                     <button onClick={onClose} className="p-2 hover:bg-white/10 rounded-full transition-colors">
                         <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round"><path d="M18 6 6 18" /><path d="m6 6 12 12" /></svg>

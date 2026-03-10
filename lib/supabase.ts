@@ -35,10 +35,11 @@ export function subscribeToOfficers(callback: (payload: any) => void) {
     )
     .subscribe();
 }
-export async function insertOfficer(officer: Omit<Officer, 'updated_at'>) {
+export async function upsertOfficer(officer: Omit<Officer, 'updated_at'>) {
+  // Tenta sincronizar pelo ID ou Matricula se existir
   const { data, error } = await supabase
     .from('officers')
-    .insert([officer])
+    .upsert([officer], { onConflict: 'id' })
     .select();
 
   if (error) throw error;

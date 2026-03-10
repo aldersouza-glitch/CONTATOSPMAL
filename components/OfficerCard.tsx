@@ -6,9 +6,10 @@ interface OfficerCardProps {
   officer: Officer;
   isAdmin: boolean;
   onDelete: (id: string) => void;
+  onEdit: (officer: Officer) => void;
 }
 
-const OfficerCard: React.FC<OfficerCardProps> = ({ officer, isAdmin, onDelete }) => {
+const OfficerCard: React.FC<OfficerCardProps> = ({ officer, isAdmin, onDelete, onEdit }) => {
   const handleCall = () => {
     window.location.href = `tel:${officer.contact.replace(/\s|-/g, '')}`;
   };
@@ -21,19 +22,28 @@ const OfficerCard: React.FC<OfficerCardProps> = ({ officer, isAdmin, onDelete })
 
   return (
     <div className="bg-white rounded-2xl shadow-sm border border-slate-100 overflow-hidden hover:shadow-md transition-all p-5 flex flex-col gap-3 relative">
-      {/* Excluir (Admin) */}
+      {/* Ações ADMIN */}
       {isAdmin && (
-        <button
-          onClick={() => {
-            if (window.confirm(`Tem certeza que deseja excluir o contato de ${officer.name}?`)) {
-              onDelete(officer.id);
-            }
-          }}
-          className="absolute top-4 right-4 text-red-400 hover:text-red-600 transition-colors p-1"
-          title="Excluir Contato"
-        >
-          <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><path d="M3 6h18" /><path d="M19 6v14c0 1-1 2-2 2H7c-1 0-2-1-2-2V6" /><path d="M8 6V4c0-1 1-2 2-2h4c1 0 2 1 2 2v2" /><line x1="10" x2="10" y1="11" y2="17" /><line x1="14" x2="14" y1="11" y2="17" /></svg>
-        </button>
+        <div className="absolute top-4 right-4 flex gap-2">
+          <button
+            onClick={() => onEdit(officer)}
+            className="text-blue-400 hover:text-blue-600 transition-colors p-1"
+            title="Editar Contato"
+          >
+            <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7" /><path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z" /></svg>
+          </button>
+          <button
+            onClick={() => {
+              if (window.confirm(`Tem certeza que deseja excluir o contato de ${officer.name}?`)) {
+                onDelete(officer.id);
+              }
+            }}
+            className="text-red-400 hover:text-red-600 transition-colors p-1"
+            title="Excluir Contato"
+          >
+            <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><path d="M3 6h18" /><path d="M19 6v14c0 1-1 2-2 2H7c-1 0-2-1-2-2V6" /><path d="M8 6V4c0-1 1-2 2-2h4c1 0 2 1 2 2v2" /><line x1="10" x2="10" y1="11" y2="17" /><line x1="14" x2="14" y1="11" y2="17" /></svg>
+          </button>
+        </div>
       )}
 
       {/* Rank and Matricula */}

@@ -3,7 +3,7 @@ import React, { useState, useMemo, useEffect } from 'react';
 import { CATEGORY_LABELS, OFFICER_DATA } from './data';
 import OfficerCard from './components/OfficerCard';
 import AddOfficerModal from './components/AddOfficerModal';
-import { getOfficers, subscribeToOfficers, insertOfficer, deleteOfficer } from './lib/supabase';
+import { getOfficers, subscribeToOfficers, upsertOfficer, deleteOfficer } from './lib/supabase';
 import { Officer } from './types';
 
 const App: React.FC = () => {
@@ -14,13 +14,35 @@ const App: React.FC = () => {
   const [officers, setOfficers] = useState<Officer[]>(OFFICER_DATA); // Inicia com o fallback local
   const [loading, setLoading] = useState(true);
   const [isAdmin, setIsAdmin] = useState(false);
+  const [editingOfficer, setEditingOfficer] = useState<Officer | null>(null);
 
-  const handleSaveOfficer = async (newOfficer: Omit<Officer, 'id' | 'updated_at'>) => {
+  const handleSaveOfficer = async (data: Omit<Officer, 'id' | 'updated_at'> | Officer) => {
     try {
-      // Gera um ID simples se não houver um (o Supabase pode gerar se for UUID, mas aqui estamos usando strings customizadas)
-      const id = `new-${Date.now()}`;
-      await insertOfficer({ ...newOfficer, id });
-      // O Realtime cuidará de atualizar a lista, mas podemos dar um feedback visual ou recarregar
+      const isEditing = 'id' in data;
+      const officerData = data as Officer;
+
+      if (isEditing) {
+        await upsertOfficer(officerData);
+      } else {
+        // Verifica se já existe um oficial com o mesmo nome ou matrícula (apenas para novos)
+        const existing = officers.find(o => 
+          (officerData.matricula && o.matricula === officerData.matricula && o.matricula !== '---' && o.matricula !== '.') ||
+          (o.name.toUpperCase().trim() === officerData.name.toUpperCase().trim() && o.unit === officerData.unit)
+        );
+
+        if (existing) {
+          if (!window.confirm(`Já existe um contato para "${existing.name}" na unidade "${existing.unit}". Deseja atualizar os dados existentes?`)) {
+            return;
+          }
+          await upsertOfficer({ ...officerData, id: existing.id });
+        } else {
+          // Gera um ID novo
+          const id = `new-${Date.now()}`;
+          await upsertOfficer({ ...officerData, id });
+        }
+      }
+      // O Realtime cuidará de atualizar a lista
+      setEditingOfficer(null);
     } catch (error) {
       console.error('Erro ao salvar oficial:', error);
       throw error;
@@ -30,13 +52,18 @@ const App: React.FC = () => {
   const handleDeleteOfficer = async (id: string) => {
     try {
       await deleteOfficer(id);
-      // Supabase's Realtime will handle the state update if it's active.
-      // But we can also eagerly update local state for faster UI reaction:
       setOfficers(prev => prev.filter(off => off.id !== id));
     } catch (error) {
       console.error('Erro ao excluir oficial:', error);
       alert('Erro ao excluir contato. Tente novamente.');
     }
+  };
+
+  const handleEditOfficer = (officer: Officer) => {
+    handleAdminAction(() => {
+      setEditingOfficer(officer);
+      setIsModalOpen(true);
+    });
   };
 
   const handleAdminAction = (action: () => void) => {
@@ -242,6 +269,7 @@ const App: React.FC = () => {
                     officer={officer}
                     isAdmin={isAdmin}
                     onDelete={handleDeleteOfficer}
+                    onEdit={handleEditOfficer}
                   />
                 ))}
               </div>
@@ -261,8 +289,12 @@ const App: React.FC = () => {
       </div>
       <AddOfficerModal
         isOpen={isModalOpen}
-        onClose={() => setIsModalOpen(false)}
+        onClose={() => {
+          setIsModalOpen(false);
+          setEditingOfficer(null);
+        }}
         onSave={handleSaveOfficer}
+        initialData={editingOfficer}
       />
     </div>
   );

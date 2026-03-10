@@ -11,9 +11,10 @@ async function migrate() {
     const { supabase } = await import('./lib/supabase');
     console.log('Iniciando migração...');
 
-    // Limpa a tabela antes de inserir (opcional, use com cuidado)
-    // const { error: deleteError } = await supabase.from('officers').delete().neq('id', '0');
-    // if (deleteError) console.error('Erro ao limpar:', deleteError);
+    // Limpa a tabela antes de inserir para remover lixo
+    console.log('Limpando tabela para evitar duplicatas antigas...');
+    const { error: deleteError } = await supabase.from('officers').delete().neq('id', 'void-id-to-delete-all');
+    if (deleteError) console.error('Erro ao limpar:', deleteError);
 
     const { data, error } = await supabase
         .from('officers')
