@@ -1,0 +1,243 @@
+--- Outros ---
+CEL    | GERONIMO CARLOS DO NASCIMENTO            | Oficial | Priority: 10100
+CEL    | JEFFERSON CLAYTON NASCIMENTO DE ASSUNCAO | Oficial | Priority: 10100
+CEL    | JOSE BERNARDO DA SILVA                   | Oficial | Priority: 10100
+CEL    | MACIEL PANTALEAO SILVA                   | Oficial | Priority: 10100
+CEL    | MACIEL PANTALEAO SILVA                   | Oficial | Priority: 10100
+CEL    | MARCOS SAMPAIO LIMA                      | Oficial | Priority: 10100
+CEL    | MOISES DO NASCIMENTO                     | Oficial | Priority: 10100
+CEL    | THULIO ROBERTO EMERY DOS SANTOS          | Oficial | Priority: 10100
+CEL    | WALTER DO VALLE DE MELO JUNIOR           | Oficial | Priority: 10100
+CEL    | WELLINGTON BITTENCOURT MARANHAO DE ARAUJO | Oficial | Priority: 10100
+CEL    | WILSON DA SILVA                          | Oficial | Priority: 10100
+TC     | ALEXANDRE RAMOS BRAGA                    | Oficial | Priority: 10200
+TC     | ANDREA SILVA ATAÍDE                      | Oficial | Priority: 10200
+TC     | BENJAMIM ANDRÉ SOUZA MORAIS              | Oficial | Priority: 10200
+TC     | BRUNO DE LIMA LINS                       | Oficial | Priority: 10200
+TC     | CARLOS ALBERTO CARDOSO DOS SANTOS        | Oficial | Priority: 10200
+TC     | CARLOS SERGIO LIMA DE ARAUJO             | Oficial | Priority: 10200
+TC     | CICERO QUEIROZ DA SILVA                  | Oficial | Priority: 10200
+TC     | CLOVES DO NASCIMENTO CORREIA             | Oficial | Priority: 10200
+TC     | DJANE MENEZES DOS SANTOS MILHOMES        | Oficial | Priority: 10200
+TC     | EDUARDO JORGE DE OLIVEIRA COSTA          | Oficial | Priority: 10200
+TC     | ELIEZER ROOSEVELT MENDONÇA LISBOA        | Oficial | Priority: 10200
+TC     | EVANDRO GUIMARAES BEZERRA                | Oficial | Priority: 10200
+TC     | FLAVIO AUGUSTO SILVA BARROS              | Oficial | Priority: 10200
+TC     | JAMES MARINHO VITAL                      | Oficial | Priority: 10200
+TC     | JEFFERSON SANTA RITA CANUTO              | Oficial | Priority: 10200
+TC     | JEORGE PEREIRA SILVA                     | Oficial | Priority: 10200
+TC     | JOSE EDUARDO SILVA COSTA                 | Oficial | Priority: 10200
+TC     | JOSE PAULO COSTA VIEIRA                  | Oficial | Priority: 10200
+TC     | JOSE WILSON DOS SANTOS                   | Oficial | Priority: 10200
+TC     | JOSIENE LIMA DOS SANTOS                  | Oficial | Priority: 10200
+TC     | KLINGERMARIO SILVA ARAUJO                | Oficial | Priority: 10200
+TC     | MARCELO DA FONSECA CARNAUBA              | Oficial | Priority: 10200
+TC     | MARCOS DE ALMEIDA SAMPAIO                | Oficial | Priority: 10200
+TC     | MARIO CESAR MONTEIRO TORRES              | Oficial | Priority: 10200
+TC     | MOACIR DOS SANTOS FILHO                  | Oficial | Priority: 10200
+TC     | MOISÉS DE NASCIMENTO ACÁCIO              | Oficial | Priority: 10200
+TC     | MONICA VALÉRIA SAMPAIO VALOES DE LIMA    | Oficial | Priority: 10200
+TC     | OSIAS ALEXANDRE FERREIRA                 | Oficial | Priority: 10200
+TC     | PAULO EDUARDO ACIOLY WANDERLEY           | Oficial | Priority: 10200
+TC     | RIVALDO FARIAS DA SILVA                  | Oficial | Priority: 10200
+TC     | ROBERTO SANTOS JUNIOR                    | Oficial | Priority: 10200
+TC     | SERGIO JOSE GALVAO ALVES                 | Oficial | Priority: 10200
+TC     | WINSTON DE SANTANA SILVA                 | Oficial | Priority: 10200
+MAJ    | ALISSON CESAR DA SILVA GAMA              | Oficial | Priority: 10300
+MAJ    | ANDERSON FABIANO DE LIMA SANTOS          | Oficial | Priority: 10300
+MAJ    | ANDERSON RICARDO JANUÁRIO DA SILVA       | Oficial | Priority: 10300
+MAJ    | ANDRE LUIS ANIBAL CALVANO                | Oficial | Priority: 10300
+MAJ    | BRAULIO RODRIGO SILVA DE SOUZA           | Oficial | Priority: 10300
+MAJ    | CARLOS EDUARDO CAVALCANTE SANTOS         | Oficial | Priority: 10300
+MAJ    | CICERO JOSE NAVARRO FERRO                | Oficial | Priority: 10300
+MAJ    | CLETIANO ANTONIO NAVARRO FERRO           | Oficial | Priority: 10300
+MAJ    | DANILVA CLAUDIA ALVINO DA SILVA          | Oficial | Priority: 10300
+MAJ    | DAVID DURVAL PEREIRA DA SILVA            | Oficial | Priority: 10300
+MAJ    | EDSON CARLOS BARROS CABRAL DE MELO       | Oficial | Priority: 10300
+MAJ    | EDUARDO HENRIQUE ARAUJO DE GUSMAO        | Oficial | Priority: 10300
+MAJ    | FRANCIS DA MOTA SANTOS                   | Oficial | Priority: 10300
+MAJ    | JOSE ALEXANDRE DOS SANTOS PORCIUNCULA    | Oficial | Priority: 10300
+MAJ    | MAJ QOEM PM MAT 126664 VICTOR DUARTE PINHEIRO NETO | Oficial | Priority: 10300
+MAJ    | MARCOS ANTONIO COSTA                     | Oficial | Priority: 10300
+MAJ    | PAULO HENRIQUE SANTOS COSTA              | Oficial | Priority: 10300
+MAJ    | POLLYANNA DE ALMEIDA BARROS              | Oficial | Priority: 10300
+MAJ    | REINALDO DE LIMA BARBOSA JÚNIOR          | Oficial | Priority: 10300
+MAJ    | SAMUEL SIDNEY OLIVEIRA SILVA             | Oficial | Priority: 10300
+MAJ    | SILVIO CARVALHO VIEIRA                   | Oficial | Priority: 10300
+MAJ    | VICTOR DUARTE PINHEIRO NETO              | Oficial | Priority: 10300
+CAP    | ALAN ROBSON DO REGO GOMES                | Oficial | Priority: 10400
+CAP    | ALBENES CORDEIRO DE FARIAS               | Oficial | Priority: 10400
+CAP    | AVNER AUGUSTO DE MORAES                  | Oficial | Priority: 10400
+CAP    | DAVI DE MELO MOTA                        | Oficial | Priority: 10400
+CAP    | DIEGO BRUNO BARBOSA SANTOS               | Oficial | Priority: 10400
+CAP    | DIEGO MAHATMA DE MORAES                  | Oficial | Priority: 10400
+CAP    | EBER CARLOS GÓES SALES LEÃO DE OLIVEIRA  | Oficial | Priority: 10400
+CAP    | ERIQUE CAVALCANTE MEDEIROS DA HORA       | Oficial | Priority: 10400
+CAP    | FERNANDO TIAGO DOS SANTOS                | Oficial | Priority: 10400
+CAP    | HENRIQUE DURVAL PEIXOTO ALCANTARA        | Oficial | Priority: 10400
+CAP    | JACKELINE CARNAUBA DE LIMA MARTINS       | Oficial | Priority: 10400
+CAP    | JOAO PAULO CORREIA CAVALCANTE            | Oficial | Priority: 10400
+CAP    | JOSE WILLYAN FIRMINO NUNES               | Oficial | Priority: 10400
+CAP    | LOURINALDO RODRIGUES LIMA                | Oficial | Priority: 10400
+CAP    | MARCIO JOSE ARAUJO DE LIMA               | Oficial | Priority: 10400
+CAP    | MARIO DE FREITAS GONÇALVES CARNEIRO FILHO | Oficial | Priority: 10400
+CAP    | OSCAR DE FREITAS BEZERRA JUNIOR          | Oficial | Priority: 10400
+CAP    | TALES TOME DE SOUSA SANTOS               | Oficial | Priority: 10400
+CAP    | THIAGO HENRIQUE BARROS LESSA             | Oficial | Priority: 10400
+CAP    | TIAGO HERCULANO DA SILVA                 | Oficial | Priority: 10400
+1º TEN | CARLOS RAPHAEL ANDRADE DE SANTANA        | Oficial | Priority: 10500
+1º TEN | JONATA APOLINARIO CALHEIROS              | Oficial | Priority: 10500
+1º TEN | KAROL DIAS ALVES                         | Oficial | Priority: 10500
+1º TEN | MAURICIO ARAUJO ALMEIDA                  | Oficial | Priority: 10500
+1º TEN | MELRISON SILVA DE LIMA                   | Oficial | Priority: 10500
+1º TEN | VAGNER MARTILIANO DE OLIVEIRA            | Oficial | Priority: 10500
+1º TEN | VICTOR HUGO TORRES BARROS                | Oficial | Priority: 10500
+1º TEN | ZAQUEU DE LIMA OLIVEIRA FILHO            | Oficial | Priority: 10500
+--- Comando ---
+CEL    | PAULO AMORIM FEITOSA FILHO               | Comandante Geral | Priority: 10050
+TC     | ARLAN SIQUEIRA DE BARROS                 | Chefe da SPP | Priority: 10160
+TC     | SANDRO RICARDO DOS SANTOS                | Chefe do Núcleo de Qualidade de Vida | Priority: 10160
+MAJ    | ADEILSON LINS DE CARVALHO                | Chefe de Gabinete do Comandante Geral c/c Chefe da Assessoria do Comandante Geral | Priority: 10250
+MAJ    | DAVID DELEON LOPES DA SILVA              | Chefe da SPO | Priority: 10260
+CAP    | ANDRE LUIS SOUZA DE FIGUEIROA            | Subchefe de Gabinete  do Comandante Geral | Priority: 10370
+--- Sertão ---
+CEL    | RAIMUNDO JOSE DE FREITAS LESSA           | Comandante do Comando de Policiamento da Região Sertão | Priority: 10060
+TC     | HEBERT ALEKSANDER CARVALHO DE SANTANA    | Comandante do 7º BPM – Santana do Ipanema | Priority: 10160
+TC     | PEDRO BARBOSA DE OLIVEIRA JUNIOR         | Comandante do 9º BPM - Delmiro Gouveia | Priority: 10160
+TC     | ADEMAR SIQUEIRA DA SILVA NETO            | Subcomandante do Comando de Policiamento da Região Sertão | Priority: 10180
+CAP    | EDUARDO HENRIQUE SALUSTIANO SANTOS       | Comandante da 6ª CPM/I – Batalha. (NOVO) | Priority: 10360
+CAP    | MARCUS VINICIUS SILVA CAVALCANTE         | Subcomandante do 9º BPM | Priority: 10380
+CAP    | PAULO CEZAR SOARES DA SILVA JUNIOR       | Subcomandante do 7º BPM | Priority: 10380
+1º TEN | JAILSON COSTA DE LIMA                    | Subcomandante da 6ª CPM/I – | Priority: 10480
+--- Norte/ZM ---
+CEL    | MARLON BATISTA DE ARAUJO                 | Comandante do Policiamento da Região Norte e Zona da Mata | Priority: 10060
+TC     | ALEANDRO FERREIRA CAITANO                | Comandante do 6º BPM – Maragogi | Priority: 10160
+TC     | ALEX HIAS ANDRADE                        | Subcomandante do Policiamento da Região Norte e Zona da Mata | Priority: 10180
+MAJ    | ADRIANO LEVY MONTEIRO SANTOS             | Comandante do 14º BPM – Joaquim Gomes | Priority: 10260
+MAJ    | GLAUBER PATRICK DE SANTANA SANTOS        | Comandante do 2º BPM – União dos Palmares | Priority: 10260
+MAJ    | LUIZ GONZAGA DE MELO FILHO               | Comandante da 8ª CPM/I – São Luís do Quitunde | Priority: 10260
+MAJ    | ANTONIO FURTUNATO DA SILVA               | Subcomandante do 14º BPM | Priority: 10280
+CAP    | FRANKLIN MELO DOS SANTOS                 | Subcomandante do 6º BPM | Priority: 10380
+CAP    | VICENTE NASCIMENTO NETO                  | Subcomandante do 2º BPM | Priority: 10380
+1º TEN | CHARLANDISON RODRIGUES DOS SANTOS - 92   | Subcomandante da 8ª CPM/I | Priority: 10480
+--- Especializado ---
+CEL    | MARIO ANTONIO DE OLIVEIRA XAVIER         | Comandante do Policiamento Especializado | Priority: 10060
+TC     | HARLEN LOPES MENDES                      | Comandante do BPTran | Priority: 10160
+TC     | SILVIO CÉSAR DA SILVA NUNES              | Comandante do BPA | Priority: 10160
+TC     | THALVANNES JOSE BELEM RAMOS              | Comandante do BPRv | Priority: 10160
+TC     | JOSE BARBOSA SILVA JUNIOR                | Subcomandante do Policiamento Especializado | Priority: 10180
+MAJ    | NOEMI GOMES FIRMO SOARES                 | Comandante do BPEsc | Priority: 10260
+MAJ    | ALEXANDRE MARTINS BISPO                  | Subcomandante do BPRv | Priority: 10280
+MAJ    | FABIO DE OLIVEIRA CHAVES                 | Subcomandante do BPA | Priority: 10280
+MAJ    | GILVANO SILVA SANTOS JUNIOR              | Subcomandante do BPTran | Priority: 10280
+MAJ    | SAMUEL CRUZ DA COSTA                     | Subcomandante do BPEsc | Priority: 10280
+CAP    | VICTOR SANTOS LOPES SAMPAIO              | Comandante da CPM/I-Faz | Priority: 10360
+1º TEN | LUIZ FERNANDO FRANÇA DE ARAUJO           | Subcomandante da CPM/I-Faz | Priority: 10480
+--- Metropolitana ---
+TC     | HIRAQUE AGNNES DOS SANTOS                | Comandante do Policiamento Metropolitano | Priority: 10160
+TC     | JASIEL FRANCISCO SILVA DE ANDRADE        | Comandante do 12º BPM - Cidade Universitária | Priority: 10160
+TC     | LUCIANO JOAO DA SILVA                    | Comandante do 5º BPM - Benedito Bentes | Priority: 10160
+TC     | LUIZ SANTOS DA SILVA                     | Comandante 1º BPM – Vergel do Lago | Priority: 10160
+MAJ    | DANIEL SOUZA DOS SANTOS                  | Comandante do 13º BPM – Jacintinho | Priority: 10260
+MAJ    | GLAUDSON JATOBA DE OLIVEIRA              | Comandante do 4º BPM – Farol | Priority: 10260
+MAJ    | RODRIGO VITAL VELOSO SOARES BOTELHO      | Comandante do 8º BPM – Rio Largo | Priority: 10260
+MAJ    | ALUCHAM ARAUJO FONSECA DE SENA           | Subcomandante do Policiamento Metropolitano | Priority: 10280
+CAP    | ANDERSON LUIZ CALHEIROS OLIVEIRA         | Chefe do Presídio Militar  12º BPM (PRESÍDIO) | Priority: 10360
+CAP    | FRANCISCO LUTIANE DE BRITTO              | Comandante da 5ª CPM/I – Antares. (NOVO) | Priority: 10360
+CAP    | JOSE PEDRO DOS ANJOS SILVA               | Comandante da 2ª CPM/I –Paripueira | Priority: 10360
+CAP    | MICHEL LINS PIMENTEL                     | Comandante da 4ª CPM/I – Marechal Deodoro | Priority: 10360
+CAP    | CINIRA RAMOS DE FREITAS - 56             | Subcomandante da 2ª CPM/I | Priority: 10380
+CAP    | EVERTON ESTEVAN CABRAL DA SILVA          | Subcomandante do 13º BPM | Priority: 10380
+CAP    | GRAYSON SAMUEL DA SILVA                  | Subcomandante 1º BPM | Priority: 10380
+CAP    | JEFFERSON CARUZO FERREIRA                | Subcomandante do 8º BPM | Priority: 10380
+CAP    | KELMANY MARCIO DE ASSIS SILVA            | Subcomandante do 12º BPM | Priority: 10380
+CAP    | PAULO VICTOR DE LIMA RODRIGUES           | Subcomandante da 5ª CPM/I | Priority: 10380
+CAP    | WELLINGTON DOS ANJOS SILVA JUNIOR        | Subcomandante do 5º BPM | Priority: 10380
+CAP    | WENDERSON VIANA GUILHERME                | Subcomadante do 4º BPM | Priority: 10400
+1º TEN | AUDERAN VIRTUOSO BISPO                   | Subcomandante da 4ª CPM/I | Priority: 10480
+--- Agreste ---
+TC     | ANAXIMANDRO TENORIO DE SA                | Comandante do Poliamento da Região do Agreste | Priority: 10160
+TC     | DIOGO VITAL DE OLIVEIRA                  | Subcomandante do Poliamento da Região do Agreste | Priority: 10180
+TC     | CARLOS ALBERTO MUNIZ DE ALBUQUERQUE      | Comadante do 3º BPM – Arapiraca | Priority: 10200
+MAJ    | ANTONIO ANDRE ANDRADE DE OLIVEIRA BARBOS | Comandante do 10º BPM – Palmeira dos Índios | Priority: 10260
+MAJ    | JACKSON PEDRO DOS SANTOS LINO            | Comandante da 7ª CPM/I – Girau do Ponciano | Priority: 10260
+CAP    | RODOLPHO HAMUL DE MELO MARINHO           | Comandante da 3ª CPM/I – Atalaia | Priority: 10360
+CAP    | EMANOEL PEDRO SANTOS SILVA               | Subcomandante do 3º BPM | Priority: 10380
+CAP    | JOSE SALATIEL COSTA BEZERRA              | Subcomandante da 7ª CPM/I | Priority: 10380
+CAP    | SAMUEL DE JESUS TELES                    | Subcomandante do 10º BPM | Priority: 10380
+1º TEN | CLAUDIO HENRIQUE SANTOS DO CARMO         | Subcomandante da 3ª CPM/I | Priority: 10480
+--- Sul ---
+TC     | FERNANDO JOSE FERREIRA SOARES JUNIOR     | Comandante do Comando de Policiamento da Região Sul | Priority: 10160
+TC     | MARIA ADRIANA DE SOUZA                   | SubComandante do Comando de Policiamento da Região Sul | Priority: 10180
+MAJ    | ANTONIO HENRIQUE DIAS COSTA              | Comandante da 10ª CPM/I –Teotônio Vilela. (NOVO) | Priority: 10260
+MAJ    | JERCIO TEIXEIRA DE FARIAS                | Comandante do 11º BPM – Penedo | Priority: 10260
+MAJ    | MARCOS AURELIO RIBEIRO PEREIRA           | Comandante da 9ª CPM/I – Coruripe; (NOVO) | Priority: 10260
+MAJ    | JEAN MIGUEL DA SILVA                     | Subcomandante do 11º BPM | Priority: 10280
+CAP    | LUIZ FELIPE DE OLIVEIRA ROCHA UGA CAMARA | Comandante da 1ª CPM/I – São Miguel dos Campos | Priority: 10360
+CAP    | MAXSUEL SANTOS SILVA                     | Subcomandante da 1ª CPM/I | Priority: 10380
+CAP    | RODRIGO BARBOSA FERRO                    | Subcomandante da 10ª CPM/I | Priority: 10380
+1º TEN | RENATO BATISTA SANTOS                    | Subcomandante da 9ª CPM/I | Priority: 10480
+--- Missões ---
+TC     | DIEGO HENRIQUE BEZERRA VIEIRA            | Comandante do RPMon | Priority: 10160
+TC     | DIEGO SARMENTO FIRMINO                   | Comandante do BOPE | Priority: 10160
+TC     | HENRIQUE JATOBÁ CORREIA                  | Comandante do Comando de Missões Especiais | Priority: 10160
+TC     | ANTONIO JORGE MOREIRA JUNIOR             | Subcomandante do Comando de Missões Especiais | Priority: 10180
+MAJ    | HELQUIAS ALISSON SANTOS PEREIRA          | Comandante da ROTAM | Priority: 10260
+MAJ    | MIGUEL VIEIRA DOS SANTOS NETO            | Comandante da COPES | Priority: 10260
+MAJ    | JOACY GALDINO DA SILVA JUNIOR            | Subcomandante do BOPE | Priority: 10280
+CAP    | DANIEL PITA AMARAL                       | Comandante da CPM/I-RAIO | Priority: 10360
+CAP    | FILLIPE ALMEIDA DE ARAUJO                | Comandante da CPChoque | Priority: 10360
+CAP    | DIOGO BUARQUE PEREIRA                    | Subcomandante do RPMon | Priority: 10380
+CAP    | RAMON DA SILVA RIBEIRO                   | Subcomandante da COPES | Priority: 10380
+CAP    | SEBASTIAO GRANGEIRO BISNETO              | Subcomandante da ROTAM | Priority: 10380
+1º TEN | JOSE FERNANDO DE OLIVEIRA CIRILO FILHO   | Subcomandante da CPChoque | Priority: 10480
+1º TEN | THIAGO BRANDAO DE LEMOS INACIO           | Subcomandante da CPM/I-RAIO | Priority: 10480
+--- Diretorias ---
+CEL    | CARLOS JOSE AZEVEDO SANTOS               | Comandante da APMSAM | Priority: 10060
+CEL    | FERNANDO GLAUCIO SANTOS LIMA             | Diretor de Finanças | Priority: 10060
+CEL    | NILTON ROCHA JUNIOR                      | Diretor de Políticas Preventivas | Priority: 10060
+CEL    | PEDRO JORGE BUARQUE MOURA                | Diretor de Ensino, Instrução e Pesquisa | Priority: 10060
+CEL    | RENILSON RODRIGUES DANTAS                | Diretor de Logística | Priority: 10060
+CEL    | SILVIO DE BRITO MOURA                    | Diretor de Saúde | Priority: 10060
+CEL    | SIMUR MENDES LAGES MAIA FERREIRA         | Subdiretor de Saúde | Priority: 10080
+TC     | LUCIANO FELIZARDO DOS SANTOS             | Comandante do Colégio da Polícia Militar do Interior | Priority: 10160
+TC     | PEDRO HENRIQUE BASILIO HONORATO          | Chefe do Departamento de Educação Física | Priority: 10160
+TC     | PHELIPE ROGERIO DOS SANTOS               | Diretor de Pessoal | Priority: 10160
+TC     | SIDNEY INACIO CUNHA                      | Comandante do Colégio da Polícia Militar da Capital | Priority: 10160
+TC     | SILVIO JOSE LUCIO E SILVA                | Diretor de Comunicação Social | Priority: 10160
+TC     | THAYRONILSON EMERY DOS SANTOS            | Diretor de Proteção Social | Priority: 10160
+TC     | THIAGO DE MORAES DUARTE OLIVEIRA         | Diretor de Inteligência | Priority: 10160
+TC     | EMERSON CAMARA DE CASTRO                 | Subdiretor de Finanças | Priority: 10180
+TC     | GLAUCO PAES TORRES                       | Subdiretor de Pessoal c/c Chefe do Centro de Segurança Individualizada (CSI) da Diretoria de Pessoal | Priority: 10180
+TC     | HELSON DE AZEVEDO SOUZA NETO             | Subcomandante da APMSAM | Priority: 10180
+TC     | JORGE FRANCELINO TENORIO                 | Subdiretor de Políticas Preventivas | Priority: 10180
+TC     | JOSILEIDE ROMEIRO MELO DE CASTRO         | Subdiretor de Proteção Social c/c Chefe da Seção de Cadastro e Arquivamento da Diretoria de Proteção Social | Priority: 10180
+TC     | MIZAEL LEITE PESSOA JUNIOR               | Subdiretor de Comunicação Social | Priority: 10180
+TC     | ROBERTO FELICIANO COSTA DA SILVA         | Subdiretor de Logística c/c Chefe da Seção de Suprimento (DLog/1) da Diretoria de Logística | Priority: 10180
+TC     | JEFFERSON LUIZ TAVARES DA SILVA          | CIA | Priority: 10200
+MAJ    | DANIEL SAMPAIO VALOES DA ROCHA           | Comandante do CFAP | Priority: 10260
+MAJ    | ANTONIO UMBELINO DOS SANTOS FILHO        | Subdiretor de Ensino, Instrução e Pesquisa | Priority: 10280
+MAJ    | BRUNO EUCLIDES DOS SANTOS OLIVEIRA       | Subcomandante do Colégio da Polícia Militar do Interior | Priority: 10280
+MAJ    | GEISON FRANCA DA SILVA                   | Subcomandante do CFAP | Priority: 10280
+MAJ    | JOSUÉ DOS SANTOS SOUZA ELIZIÁRIO         | Subdiretor de Inteligência | Priority: 10280
+MAJ    | RODRIGO MEDEIROS FERREIRA                | Subcomandante do Colégio da Polícia Militar da Capital | Priority: 10280
+--- EMG ---
+CEL    | CARLOS ALBERTO LUNA DOS SANTOS           | Chefe do EMG | Priority: 10060
+TC     | CICERO SERCUNDINO DA SILVA               | Chefe da 1ª Seção do EMG | Priority: 10160
+TC     | JORGE RODRIGUES DE MORAIS JUNIOR         | Chefe da 3ª Seção do EMG | Priority: 10160
+TC     | PAULO EUGENIO DA SILVA FREITAS           | Chefe da 2ª Seção do EMG | Priority: 10160
+TC     | SIDRAITON SOARES SANTOS                  | Chefe da 5ª Seção do EMG | Priority: 10160
+TC     | SERGIO HENRIQUE LIMA DOS SANTOS          | Subchefe do EMG | Priority: 10180
+MAJ    | JOSE PETRONIO PANTALEAO DOS SANTOS       | Chefe da 4ª Seção do EMG | Priority: 10260
+--- Administrativo ---
+TC     | CLAUDIO JOSE DA SILVA                    | Subcorregedor Geral | Priority: 10190
+TC     | JOSÉ DANIEL DE LIMA NETO                 | Corregedor Geral | Priority: 10190
+--- Subcomando ---
+CEL    | NEYVALDO JOSÉ AMORIM DA SILVA            | SubComandante Geral | Priority: 10070
+TC     | GERILO ALVES DE OLIVEIRA                 | Chefe da Ajudância Geral | Priority: 10150
+TC     | LUCIANA LEITE SARMENTO                   | Chefe da Ouvidoria Geral | Priority: 10150
+TC     | MARCELO FERREIRA LIMA VALOES             | Chefe da Assessoria do Subcomandante Geral | Priority: 10170
+MAJ    | EURICO CORREIA LEAL                      | Chefe da Seção de Serviço de Informações ao Cidadão da Ouvidoria Geral | Priority: 10250
+MAJ    | JOSE ANDERSON BOMFIM BARROS              | Chefe da Seção de Atendimento ao Público da Ouvidoria Geral | Priority: 10250
+CAP    | IGOR SARMENTO FIRMINO                    | Subchefe da Assessoria do Subcomandante Geral | Priority: 10370
+CAP    | MARIANA CESAR GOIS CAETANO TOLEDO        | Subchefe da Ajudância Geral c/c Chefe da Secretaria da Ajudância Geral | Priority: 10370

@@ -9,6 +9,7 @@ import { Officer } from './types';
 const App: React.FC = () => {
   const [searchTerm, setSearchTerm] = useState('');
   const [activeCategory, setActiveCategory] = useState('all');
+  const [activeUnit, setActiveUnit] = useState('all');
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [officers, setOfficers] = useState<Officer[]>(OFFICER_DATA); // Inicia com o fallback local
@@ -108,9 +109,10 @@ const App: React.FC = () => {
     };
   }, []);
 
-  // Fecha o menu lateral no mobile ao trocar de categoria
+  // Fecha o menu lateral no mobile ao trocar de categoria e limpa o filtro de unidade
   useEffect(() => {
     setIsSidebarOpen(false);
+    setActiveUnit('all'); // Reseta a unidade ao trocar de aba
   }, [activeCategory]);
 
   const filteredOfficers = useMemo(() => {
@@ -127,8 +129,8 @@ const App: React.FC = () => {
       // Prioridade por Posto/Graduação (Protegido contra null/undefined/espaços)
       const rankKey = (officer.rank || '').toUpperCase().trim();
       const rankPrio = RANK_PRIORITY[rankKey] || 100;
-      // Multiplicador alto para garantir que Patente/Graduação seja a regra mais forte
-      priority += rankPrio * 100;
+      // Multiplicador alto para garantir que Patente/Graduação seja a regra mais forte EXCLUSIVA
+      priority += rankPrio * 200;
 
       // Bônus de prioridade por Cargo dentro da mesma patente
       // Comandantes, diretores e chefes têm prioridade sobre subs
@@ -158,8 +160,9 @@ const App: React.FC = () => {
           (officer.rank && officer.rank.toLowerCase().includes(search));
 
         const matchesCategory = activeCategory === 'all' || officer.category === activeCategory;
+        const matchesUnit = activeUnit === 'all' || officer.unit.trim().toUpperCase() === activeUnit;
 
-        return matchesSearch && matchesCategory;
+        return matchesSearch && matchesCategory && matchesUnit;
       })
       .sort((a, b) => {
         const prioA = getOfficerPriority(a);
@@ -170,7 +173,18 @@ const App: React.FC = () => {
         // Se a prioridade for igual, ordena por nome
         return a.name.localeCompare(b.name);
       });
-  }, [searchTerm, activeCategory, officers]);
+  }, [searchTerm, activeCategory, activeUnit, officers]);
+
+  const unitsInActiveCategory = useMemo(() => {
+    if (activeCategory === 'all') return [];
+    
+    const units = officers
+      .filter(o => o.category === activeCategory)
+      .map(o => o.unit.trim().toUpperCase())
+      .filter(u => u !== '' && u !== '-' && u !== 'S/U');
+    
+    return Array.from(new Set(units)).sort();
+  }, [activeCategory, officers]);
 
   const allUnits = useMemo(() => {
     return Array.from(new Set(officers.map(o => o.unit.trim().toUpperCase()))).sort();
@@ -243,7 +257,7 @@ const App: React.FC = () => {
         </nav>
 
         <div className="p-4 bg-black/20 text-[9px] text-blue-200/50 text-center uppercase tracking-[0.2em] font-bold border-t border-white/5">
-          Gabinete do Comando Geral <span className="opacity-50 text-[8px] block mt-1">v1.4 - Versão Atualizada</span>
+          Gabinete do Comando Geral <span className="opacity-50 text-[8px] block mt-1">v1.5 - Filtros Ativos</span>
         </div>
       </aside>
 
@@ -300,7 +314,7 @@ const App: React.FC = () => {
         {/* Results Body */}
         <main className="flex-1 overflow-y-auto p-4 lg:p-10 bg-[#f1f5f9] custom-scrollbar">
           <div className="max-w-7xl mx-auto">
-            <div className="flex flex-col sm:flex-row sm:items-center justify-between mb-6 gap-3">
+            <div className="flex flex-col sm:flex-row sm:items-center justify-between mb-4 gap-3">
               <div className="flex items-center gap-3">
                 <div className="w-1.5 h-6 bg-blue-700 rounded-full shadow-sm"></div>
                 <h2 className="text-lg lg:text-2xl font-black text-slate-800 uppercase tracking-tight">
@@ -311,6 +325,33 @@ const App: React.FC = () => {
                 {filteredOfficers.length} {filteredOfficers.length === 1 ? 'contato' : 'contatos'}
               </div>
             </div>
+
+            {/* Filtro de Unidades Exclusivo da Categoria */}
+            {unitsInActiveCategory.length > 0 && activeCategory !== 'all' && (
+              <div className="flex items-center gap-2 overflow-x-auto pb-4 mb-2 custom-scrollbar no-scrollbar-on-mobile">
+                <button
+                  onClick={() => setActiveUnit('all')}
+                  className={`flex-shrink-0 px-4 py-2 rounded-full text-[11px] font-black uppercase tracking-wider transition-all shadow-sm
+                    ${activeUnit === 'all' 
+                      ? 'bg-[#002b5c] text-white' 
+                      : 'bg-white text-slate-500 hover:bg-slate-100 hover:text-slate-800 border border-slate-200'}`}
+                >
+                  Todas Unidades
+                </button>
+                {unitsInActiveCategory.map(unit => (
+                  <button
+                    key={unit}
+                    onClick={() => setActiveUnit(unit)}
+                    className={`flex-shrink-0 px-4 py-2 rounded-full text-[11px] font-bold uppercase tracking-wider transition-all shadow-sm
+                      ${activeUnit === unit 
+                        ? 'bg-blue-600 text-white' 
+                        : 'bg-white text-slate-600 hover:bg-slate-100 border border-slate-200'}`}
+                  >
+                    {unit}
+                  </button>
+                ))}
+              </div>
+            )}
 
             {filteredOfficers.length > 0 ? (
               <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-4 lg:gap-6">
