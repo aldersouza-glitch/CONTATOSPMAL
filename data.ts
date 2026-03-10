@@ -246,6 +246,5 @@ export const CATEGORY_LABELS: Record<string, string> = {
   Especializado: 'Pol. Especializado',
   Missões: 'Missões Especiais',
   Diretorias: 'Diretorias / Ensino',
-  Administrativo: 'Corregedoria',
-  Outros: 'Outros Oficiais'
+  Administrativo: 'Corregedoria'
 };
