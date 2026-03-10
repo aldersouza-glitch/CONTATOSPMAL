@@ -114,19 +114,52 @@ const App: React.FC = () => {
   }, [activeCategory]);
 
   const filteredOfficers = useMemo(() => {
-    return officers.filter((officer) => {
-      const search = searchTerm.toLowerCase().trim();
-      const matchesSearch =
-        officer.name.toLowerCase().includes(search) ||
-        officer.unit.toLowerCase().includes(search) ||
-        officer.contact.replace(/\s|-/g, '').includes(search.replace(/\s|-/g, '')) ||
-        (officer.role && officer.role.toLowerCase().includes(search)) ||
-        (officer.rank && officer.rank.toLowerCase().includes(search));
+    const RANK_PRIORITY: Record<string, number> = {
+      'CEL': 1, 'TC': 2, 'MAJ': 3, 'CAP': 4,
+      '1º TEN': 5, '2º TEN': 6, 'ASP': 7,
+      'ST': 8, '1º SGT': 9, '2º SGT': 10, '3º SGT': 11,
+      'CB': 12, 'SD': 13
+    };
 
-      const matchesCategory = activeCategory === 'all' || officer.category === activeCategory;
+    const getOfficerPriority = (officer: Officer) => {
+      let priority = 1000;
+      
+      // Prioridade por Posto/Graduação
+      const rankPrio = RANK_PRIORITY[officer.rank.toUpperCase()] || 100;
+      priority += rankPrio * 10;
 
-      return matchesSearch && matchesCategory;
-    });
+      // Bônus de prioridade por Cargo (quanto menor o número, mais pro topo)
+      const role = (officer.role || '').toLowerCase();
+      if (role.includes('geral')) priority -= 50; 
+      if (role.includes('comandante') || role.includes('diretor') || role.includes('chefe')) priority -= 30;
+      if (role.includes('subcomandante') || role.includes('subdiretor') || role.includes('subchefe')) priority -= 15;
+
+      return priority;
+    };
+
+    return officers
+      .filter((officer) => {
+        const search = searchTerm.toLowerCase().trim();
+        const matchesSearch =
+          officer.name.toLowerCase().includes(search) ||
+          officer.unit.toLowerCase().includes(search) ||
+          officer.contact.replace(/\s|-/g, '').includes(search.replace(/\s|-/g, '')) ||
+          (officer.role && officer.role.toLowerCase().includes(search)) ||
+          (officer.rank && officer.rank.toLowerCase().includes(search));
+
+        const matchesCategory = activeCategory === 'all' || officer.category === activeCategory;
+
+        return matchesSearch && matchesCategory;
+      })
+      .sort((a, b) => {
+        const prioA = getOfficerPriority(a);
+        const prioB = getOfficerPriority(b);
+        
+        if (prioA !== prioB) return prioA - prioB;
+        
+        // Se a prioridade for igual, ordena por nome
+        return a.name.localeCompare(b.name);
+      });
   }, [searchTerm, activeCategory, officers]);
 
   const allUnits = useMemo(() => {
