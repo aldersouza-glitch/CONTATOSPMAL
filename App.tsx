@@ -263,7 +263,7 @@ const App: React.FC = () => {
         </nav>
 
         <div className="p-4 bg-black/20 text-[9px] text-blue-200/50 text-center uppercase tracking-[0.2em] font-bold border-t border-white/5">
-          Gabinete do Subcomando Geral <span className="opacity-50 text-[8px] block mt-1">v1.8 - Filtros Restritos</span>
+          Gabinete do Subcomando Geral <span className="opacity-50 text-[8px] block mt-1">v1.9 - Mobile Ajustado</span>
         </div>
       </aside>
 

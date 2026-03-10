@@ -82,8 +82,8 @@ const AddOfficerModal: React.FC<AddOfficerModalProps> = ({ isOpen, onClose, onSa
 
     return (
         <div className="fixed inset-0 bg-black/70 backdrop-blur-sm z-[100] flex items-center justify-center p-4">
-            <div className="bg-white rounded-3xl w-full max-w-xl shadow-2xl overflow-hidden animate-in fade-in zoom-in duration-300">
-                <div className="bg-[#002b5c] p-6 text-white flex justify-between items-center">
+            <div className="bg-white rounded-3xl w-full max-w-xl shadow-2xl overflow-hidden flex flex-col max-h-[90vh] animate-in fade-in zoom-in duration-300 m-2">
+                <div className="bg-[#002b5c] p-5 sm:p-6 text-white flex justify-between items-center shrink-0">
                     <div>
                         <h2 className="text-xl font-black uppercase tracking-tight">
                             {initialData ? 'Editar Oficial' : 'Novo Oficial'}
@@ -97,8 +97,8 @@ const AddOfficerModal: React.FC<AddOfficerModalProps> = ({ isOpen, onClose, onSa
                     </button>
                 </div>
 
-                <form onSubmit={handleSubmit} className="p-8 space-y-6">
-                    <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <form onSubmit={handleSubmit} className="p-5 sm:p-8 space-y-4 sm:space-y-6 overflow-y-auto custom-scrollbar">
+                    <div className="grid grid-cols-1 md:grid-cols-2 gap-4 sm:gap-6">
                         <div className="md:col-span-2">
                             <label className="block text-[10px] font-black text-slate-400 uppercase tracking-widest mb-1.5 ml-1">Nome Completo</label>
                             <input
@@ -186,7 +186,7 @@ const AddOfficerModal: React.FC<AddOfficerModalProps> = ({ isOpen, onClose, onSa
                         </div>
                     </div>
 
-                    <div className="flex gap-4 pt-4">
+                    <div className="flex flex-col-reverse sm:flex-row gap-3 pt-4 pb-2">
                         <button
                             type="button"
                             onClick={onClose}
