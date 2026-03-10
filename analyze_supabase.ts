@@ -4,8 +4,8 @@ import { resolve } from 'path';
 dotenv.config({ path: resolve(process.cwd(), '.env') });
 import { createClient } from '@supabase/supabase-js';
 
-const supabaseUrl = process.env.VITE_SUPABASE_URL;
-const supabaseAnonKey = process.env.VITE_SUPABASE_ANON_KEY;
+const supabaseUrl = process.env.VITE_SUPABASE_URL!;
+const supabaseAnonKey = process.env.VITE_SUPABASE_ANON_KEY!;
 
 const supabase = createClient(supabaseUrl, supabaseAnonKey);
 
@@ -15,11 +15,11 @@ async function analyze() {
 
     console.log('Total in Supabase:', officers.length);
 
-    const nameGroups = new Map();
-    for (const off of officers) {
-        const name = off.name.trim().toUpperCase();
+    const nameGroups = new Map<string, any[]>();
+    for (const off of (officers || [])) {
+        const name = (off.name || '').trim().toUpperCase();
         if (!nameGroups.has(name)) nameGroups.set(name, []);
-        nameGroups.get(name).push(off);
+        nameGroups.get(name)!.push(off);
     }
 
     console.log('Unique names in Supabase:', nameGroups.size);
@@ -28,7 +28,7 @@ async function analyze() {
     for (const [name, group] of nameGroups.entries()) {
         if (group.length > 1) {
             console.log(`DUPLICATE NAME: "${name}" (${group.length} entries)`);
-            group.forEach(o => {
+            group.forEach((o: any) => {
                 console.log(`  - ID: ${o.id}, MAT: ${o.matricula}, UNIT: ${o.unit}, ROLE: ${o.role}`);
             });
             duplicatesCount += (group.length - 1);

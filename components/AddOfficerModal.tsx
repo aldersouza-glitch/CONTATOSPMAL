@@ -26,7 +26,7 @@ const AddOfficerModal: React.FC<AddOfficerModalProps> = ({ isOpen, onClose, onSa
             setFormData({
                 name: initialData.name,
                 rank: initialData.rank,
-                role: initialData.role,
+                role: initialData.role || '',
                 unit: initialData.unit,
                 contact: initialData.contact,
                 category: initialData.category,
@@ -53,7 +53,7 @@ const AddOfficerModal: React.FC<AddOfficerModalProps> = ({ isOpen, onClose, onSa
         try {
             if (initialData) {
                 // Ao editar, passamos o objeto completo com ID
-                await onSave({ ...formData, id: initialData.id } as Officer);
+                await onSave({ ...formData, id: initialData.id as string } as Officer);
             } else {
                 // Ao criar, passamos apenas os campos de dados
                 await onSave(formData as Omit<Officer, 'id' | 'updated_at'>);
