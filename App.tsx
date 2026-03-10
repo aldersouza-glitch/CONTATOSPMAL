@@ -122,18 +122,27 @@ const App: React.FC = () => {
     };
 
     const getOfficerPriority = (officer: Officer) => {
-      let priority = 1000;
+      let priority = 10000;
       
       // Prioridade por Posto/Graduação (Protegido contra null/undefined/espaços)
       const rankKey = (officer.rank || '').toUpperCase().trim();
       const rankPrio = RANK_PRIORITY[rankKey] || 100;
-      priority += rankPrio * 10;
+      // Multiplicador alto para garantir que Patente/Graduação seja a regra mais forte
+      priority += rankPrio * 100;
 
-      // Bônus de prioridade por Cargo (quanto menor o número, mais pro topo)
+      // Bônus de prioridade por Cargo dentro da mesma patente
+      // Comandantes, diretores e chefes têm prioridade sobre subs
       const role = (officer.role || '').toLowerCase();
-      if (role.includes('geral')) priority -= 50; 
-      if (role.includes('comandante') || role.includes('diretor') || role.includes('chefe')) priority -= 30;
-      if (role.includes('subcomandante') || role.includes('subdiretor') || role.includes('subchefe')) priority -= 15;
+      
+      if (role.includes('subcomandante') || role.includes('subdiretor') || role.includes('subchefe')) {
+        priority -= 20; // Subs ganham 20 pontos de prioridade
+      } else if (role.includes('comandante') || role.includes('diretor') || role.includes('chefe')) {
+        priority -= 40; // Chefes ganham 40 pontos (ficam acima dos subs)
+      }
+
+      if (role.includes('geral')) {
+        priority -= 10; // Bônus final para Geral
+      }
 
       return priority;
     };
@@ -234,7 +243,7 @@ const App: React.FC = () => {
         </nav>
 
         <div className="p-4 bg-black/20 text-[9px] text-blue-200/50 text-center uppercase tracking-[0.2em] font-bold border-t border-white/5">
-          Gabinete do Comando Geral <span className="opacity-50">v1.2</span>
+          Gabinete do Comando Geral <span className="opacity-50">v1.3</span>
         </div>
       </aside>
 
