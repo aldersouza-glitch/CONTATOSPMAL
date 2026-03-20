@@ -35,11 +35,17 @@ export function subscribeToOfficers(callback: (payload: any) => void) {
     )
     .subscribe();
 }
-export async function upsertOfficer(officer: Omit<Officer, 'updated_at'>) {
+export async function upsertOfficer(officer: Partial<Officer>) {
+  // Adiciona a data de atualização atual automaticamente
+  const payload = {
+    ...officer,
+    updated_at: new Date().toISOString()
+  };
+
   // Tenta sincronizar pelo ID ou Matricula se existir
   const { data, error } = await supabase
     .from('officers')
-    .upsert([officer], { onConflict: 'id' })
+    .upsert([payload], { onConflict: 'id' })
     .select();
 
   if (error) throw error;
