@@ -314,7 +314,7 @@ const App: React.FC = () => {
                 <div>
                   <h2 className="text-white text-[10px] lg:text-xs font-black uppercase tracking-[0.3em] opacity-90 drop-shadow-sm">Busca de Oficiais</h2>
                   <div className="h-0.5 w-10 bg-blue-400 mt-1.5 mb-1.5 rounded-full shadow-glow"></div>
-                  {lastUpdate && (
+                  {isAdmin && lastUpdate && (
                     <div className="text-[9px] lg:text-[10px] text-blue-200 font-medium tracking-wider flex items-center gap-1.5 mt-2">
                       <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
                       Atualizado em: {lastUpdate}
