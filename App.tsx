@@ -204,6 +204,33 @@ const App: React.FC = () => {
     return Array.from(new Set(officers.map(o => o.role?.trim() || ''))).filter(r => r !== '').sort();
   }, [officers]);
 
+  const lastUpdate = useMemo(() => {
+    if (!officers.length) return null;
+    let maxDate = new Date(0);
+    let hasValidDate = false;
+    officers.forEach(o => {
+      // Tenta usar updated_at, se não existir, usa created_at (tipo 'any' para forçar leitura se não estiver na interface)
+      const dateStr = o.updated_at || (o as any).created_at;
+      if (dateStr) {
+        const d = new Date(dateStr);
+        if (!isNaN(d.getTime()) && d > maxDate) {
+          maxDate = d;
+          hasValidDate = true;
+        }
+      }
+    });
+
+    if (!hasValidDate) return null;
+
+    return new Intl.DateTimeFormat('pt-BR', {
+      day: '2-digit',
+      month: '2-digit',
+      year: 'numeric',
+      hour: '2-digit',
+      minute: '2-digit'
+    }).format(maxDate);
+  }, [officers]);
+
   return (
     <div className="flex h-screen w-full bg-[#f8fafc] overflow-hidden relative">
       {/* Overlay Mobile */}
@@ -286,7 +313,13 @@ const App: React.FC = () => {
                 </button>
                 <div>
                   <h2 className="text-white text-[10px] lg:text-xs font-black uppercase tracking-[0.3em] opacity-90 drop-shadow-sm">Busca de Oficiais</h2>
-                  <div className="h-0.5 w-10 bg-blue-400 mt-1.5 rounded-full shadow-glow"></div>
+                  <div className="h-0.5 w-10 bg-blue-400 mt-1.5 mb-1.5 rounded-full shadow-glow"></div>
+                  {lastUpdate && (
+                    <div className="text-[9px] lg:text-[10px] text-blue-200 font-medium tracking-wider flex items-center gap-1.5 mt-2">
+                      <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+                      Atualizado em: {lastUpdate}
+                    </div>
+                  )}
                 </div>
               </div>
 
